@@ -53,7 +53,7 @@ session_start();
                     <div class="col">
                         <div class="form-group">
                             <label for="lat-direcao">Latitude Direção</label>
-                            <select class="form-control" id="lat-direcao" name="lat-direcao" name="lat-direcao" required>
+                            <select class="form-control" id="lat-direcao" name="lat-direcao" required>
                                 <option value=""></option>
                                 <option value="N">N</option>
                                 <option value="S">S</option>
@@ -83,7 +83,7 @@ session_start();
                     <div class="col">
                         <div class="form-group">
                             <label for="lon-direcao">Longitude Direção</label>
-                            <select class="form-control" id="lon-direcao" name="lon-direcao" name="lon-direcao" required>
+                            <select class="form-control" id="lon-direcao" name="lon-direcao" required>
                                 <option value=""></option>
                                 <option value="E">E</option>
                                 <option value="W">W</option>
