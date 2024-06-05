@@ -14,7 +14,7 @@ function formatarDeDMSParaDecimal($info)
     */
 
     if ($info['direcao'] == 'S' || $info['direcao'] == 'W')
-        $decimal *= -1;
+        $decimal *= -1; // Ajusta o sinal para coordenadas no hemisfério sul ou oeste
 
     return $decimal;
 }
