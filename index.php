@@ -28,96 +28,109 @@ session_start();
     </div>
   </div>
 
-  <div class="row">    
-    <div class="col-md-8 offset-md-2">      
-        <form method="post" action="process.php">
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="lat-graus">º</label>
-                        <input type="number" class="form-control" id="lat-graus" name="lat-graus" placeholder="º" required>
+    <div class="row">    
+        <div class="col-md-8 offset-md-2">      
+            <form method="post" action="process.php">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lat-graus">º</label>
+                            <input type="text" class="form-control" id="lat-graus" name="lat-graus" placeholder="º" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lat-minutos">'</label>
+                            <input type="text" class="form-control" id="lat-minutos" name="lat-minutos" placeholder="'" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lat-segundos">''</label>
+                            <input type="text" class="form-control" id="lat-segundos" name="lat-segundos" placeholder="''" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lat-direcao">Latitude Direção</label>
+                            <select class="form-control" id="lat-direcao" name="lat-direcao" name="lat-direcao" required>
+                                <option value=""></option>
+                                <option value="N">N</option>
+                                <option value="S">S</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="lat-minutos">'</label>
-                        <input type="number" class="form-control" id="lat-minutos" name="lat-minutos" placeholder="'" required>
+                <div class="row mt-3">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lon-graus">º</label>
+                            <input type="text" class="form-control" id="lon-graus" name="lon-graus" placeholder="º" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lon-minutos">'</label>
+                            <input type="text" class="form-control" id="lon-minutos" name="lon-minutos" placeholder="'" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                        <label for="lon-segundos">''</label>
+                        <input type="text" class="form-control" id="lon-segundos" name="lon-segundos" placeholder="''" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lon-direcao">Longitude Direção</label>
+                            <select class="form-control" id="lon-direcao" name="lon-direcao" name="lon-direcao" required>
+                                <option value=""></option>
+                                <option value="E">E</option>
+                                <option value="W">W</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="lat-segundos">''</label>
-                        <input type="number" class="form-control" id="lat-segundos" name="lat-segundos" placeholder="''" required>
+                <div class="row mt-4">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-block">Formatar</button>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="lat-direcao">Latitude Direção</label>
-                        <select class="form-control" id="lat-direcao" name="lat-direcao" name="lat-direcao" required>
-                            <option value=""></option>
-                            <option value="N">N</option>
-                            <option value="S">S</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="lon-graus">º</label>
-                        <input type="number" class="form-control" id="lon-graus" name="lon-graus" placeholder="º" required>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="lon-minutos">'</label>
-                        <input type="number" class="form-control" id="lon-minutos" name="lon-minutos" placeholder="'" required>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                    <label for="lon-segundos">''</label>
-                    <input type="number" class="form-control" id="lon-segundos" name="lon-segundos" placeholder="''" required>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="lon-direcao">Longitude Direção</label>
-                        <select class="form-control" id="lon-direcao" name="lon-direcao" name="lon-direcao" required>
-                            <option value=""></option>
-                            <option value="E">E</option>
-                            <option value="W">W</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary btn-block">Formatar</button>
-                </div>
-            </div>      
-        </form>     
+                </div>      
+            </form>     
+        </div>
     </div>
-  </div>
 
-  <?php if (isset($_SESSION['latitude_decimal']) && isset($_SESSION['longitude_decimal'])) { ?> 
-  <div class="row mt-5">    
-    <div class="col-md-5">
-        <p class="text-center bg-success pt-3 pb-3 text-white">
-          Latitude em decimal: <b><?php echo $_SESSION['latitude_decimal']; ?></b>       
-        </p>        
-    </div>
-    <div class="col-md-5 offset-md-2">
-        <p class="text-center bg-success pt-3 pb-3 text-white">
-          Longitude em decimal: <b><?php echo $_SESSION['longitude_decimal']; ?></b>
-        </p>
-    </div>
-  </div>
-  <?php
-        unset($_SESSION['latitude_decimal']);
-        unset($_SESSION['longitude_decimal']);
-    }
-  ?>     
+    <?php if (isset($_SESSION['error']) && $_SESSION['error'] === 'invalid input values') { ?> 
+        <div class="row mt-5">    
+            <div class="col-md-12">
+                <p class="text-center bg-danger pt-3 pb-3 text-white fw-bold">
+                    CAMPOS COM VALORES INVÁLIDOS.  POR FAVOR, VERIFIQUE E TENTE NOVAMENTE!       
+                </p>        
+            </div>           
+        </div>
+    <?php
+            unset($_SESSION['error']);
+        }
+    ?>    
+
+    <?php if (isset($_SESSION['latitude_decimal']) && isset($_SESSION['longitude_decimal'])) { ?> 
+        <div class="row mt-5">    
+            <div class="col-md-5">
+                <p class="text-center bg-success pt-3 pb-3 text-white">
+                Latitude em decimal: <b><?php echo $_SESSION['latitude_decimal']; ?></b>       
+                </p>        
+            </div>
+            <div class="col-md-5 offset-md-2">
+                <p class="text-center bg-success pt-3 pb-3 text-white">
+                Longitude em decimal: <b><?php echo $_SESSION['longitude_decimal']; ?></b>
+                </p>
+            </div>
+        </div>
+    <?php
+            unset($_SESSION['latitude_decimal']);
+            unset($_SESSION['longitude_decimal']);
+        }
+    ?>     
 </div>
 
 <!-- Bootstrap JS -->

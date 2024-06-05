@@ -19,6 +19,12 @@ function formatarDeDMSParaDecimal($info)
     return $decimal;
 }
 
+// Função que verifica se os valores vindos do formulário são válidos
+function validarDMS($graus, $minutos, $segundos) {
+    return  is_numeric($graus) && $graus >= 0 &&
+            is_numeric($minutos) && $minutos >= 0 &&
+            is_numeric($segundos) && $segundos >= 0;
+}
 
 // Latitude
 $infoLat = [];
@@ -34,15 +40,26 @@ $infoLon['minutos'] = $_POST["lon-minutos"];
 $infoLon['segundos'] = $_POST["lon-segundos"];
 $infoLon['direcao'] = $_POST["lon-direcao"];
 
-// Nessa parte nós estamos convertendo as coordenadas de latitude de DMS para decimal
-$latitudeDecimal = formatarDeDMSParaDecimal($infoLat);
 
-// Nessa parte nós estamos convertendo as coordenadas de longitude de DMS para decimal
-$longitudeDecimal = formatarDeDMSParaDecimal($infoLon);
- 
-$_SESSION['latitude_decimal'] = $latitudeDecimal;
-$_SESSION['longitude_decimal'] = $longitudeDecimal;
+if ( 
+    validarDMS($infoLat['graus'], $infoLat['minutos'], $infoLat['segundos']) &&
+    validarDMS($infoLon['graus'], $infoLon['minutos'], $infoLon['segundos'])
+   ) 
+{
+  // Nessa parte nós estamos convertendo as coordenadas de latitude de DMS para decimal
+  $latitudeDecimal = formatarDeDMSParaDecimal($infoLat);
 
+  // Nessa parte nós estamos convertendo as coordenadas de longitude de DMS para decimal
+  $longitudeDecimal = formatarDeDMSParaDecimal($infoLon);
+  
+  // Salvando os valores na session
+  $_SESSION['latitude_decimal'] = $latitudeDecimal;
+  $_SESSION['longitude_decimal'] = $longitudeDecimal;
+
+} else {
+  // Salvando a mensagem de erro na session
+  $_SESSION['error'] = 'invalid input values';
+}
 
 header('Location: index.php');
 exit();
